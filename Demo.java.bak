@@ -1,0 +1,41 @@
+class Maths
+{
+	public int iNo1;
+	public int iNo2;
+	
+	public Maths()
+	{
+		System.out.println("Inside default constructor");
+		iNo1=0;
+		iNo2=0;
+	}
+	public Maths(int a, int b)
+	{
+		System.out.println("Inside parametrised constructor");
+		iNo1 = a;
+		iNo2 = b;
+	
+	}
+}
+
+public int Addition()
+{
+	int iAns = 0;
+	iAns = iNo1+iNo2;
+	return iAns;
+}
+
+public int Substraction()
+{
+	int iAns = 0;
+	iAns= iNo1 - iNo2;
+	return iAns;
+}
+
+class Demo
+{
+	public static void main(String arg[])
+	{
+		
+	}
+}
