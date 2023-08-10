@@ -10,7 +10,7 @@ class Database
 	{
 		String URL = "jdbc:mysql://localhost:3306/ppa41";;
 		String Username = "root";
-		String Password = "root";
+		String Password = "";
 		String Query = "select * from student";
 		
 		Connection cobj = DriverManager.getConnection(URL,Username,Password);

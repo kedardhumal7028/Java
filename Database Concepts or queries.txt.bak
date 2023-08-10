@@ -1,4 +1,17 @@
 
+C:\Users\Kedar>cd C:\xampp\mysql\bin
+
+C:\xampp\mysql\bin>mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 16
+Server version: 10.4.22-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]>
+
 C:\xampp\mysql\bin>mysql -u root
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 8
@@ -22,19 +35,6 @@ MariaDB [(none)]> show databases;
 
 MariaDB [(none)]>  create database PPA41;
 Query OK, 1 row affected (0.007 sec)
-
-MariaDB [(none)]> show databases
-    -> Bye
-Ctrl-C -- exit!
-
-C:\xampp\mysql\bin>mysql -u root
-Welcome to the MariaDB monitor.  Commands end with ; or \g.
-Your MariaDB connection id is 9
-Server version: 10.4.22-MariaDB mariadb.org binary distribution
-
-Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 MariaDB [(none)]> show databases;
 +--------------------+
@@ -186,8 +186,6 @@ MariaDB [PPA41]> select * from student order by rid;
 +------+-------+-------+--------+
 5 rows in set (0.000 sec)
 
-MariaDB [PPA41]> select * from student order by desc;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'desc' at line 1
 MariaDB [PPA41]> select * from student order by marks DESC;
 +------+-------+-------+--------+
 | RID  | Name  | Marks | City   |
@@ -294,8 +292,6 @@ MariaDB [PPA41]> select count(name) from student;
 +-------------+
 1 row in set (0.001 sec)
 
-MariaDB [PPA41]> select count(rid) from student whereb city = 'mumbai';
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'city = 'mumbai'' at line 1
 MariaDB [PPA41]> select count(rid) from student where city = 'mumbai';
 +------------+
 | count(rid) |
@@ -352,4 +348,408 @@ MariaDB [PPA41]> select * from student where name like 'p%a';
 +------+-------+-------+--------+
 1 row in set (0.000 sec)
 
-MariaDB [PPA41]>
+Microsoft Windows [Version 10.0.19045.2913]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Kedar>C:\xampp\mysql\bin
+'C:\xampp\mysql\bin' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Kedar>cd C:\xampp\mysql\bin
+
+C:\xampp\mysql\bin>mysql Myexe -u root
+ERROR 1049 (42000): Unknown database 'myexe'
+
+C:\xampp\mysql\bin>mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 9
+Server version: 10.4.22-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| ppa41              |
+| test               |
++--------------------+
+6 rows in set (0.053 sec)
+
+MariaDB [(none)]> use ppa41;
+Database changed
+MariaDB [ppa41]> describe student;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| RID   | int(11)      | YES  |     | NULL    |       |
+| Name  | varchar(255) | YES  |     | NULL    |       |
+| Marks | int(11)      | YES  |     | NULL    |       |
+| City  | varchar(255) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.101 sec)
+
+MariaDB [ppa41]> select * from student;
++------+-------+-------+--------+
+| RID  | Name  | Marks | City   |
++------+-------+-------+--------+
+|  101 | Amit  |    87 | Pune   |
+|  102 | Pooja |    92 | Mumbai |
+|  121 | Aditi |    67 | Mumbai |
+|  201 | Sneha |    98 | Satara |
++------+-------+-------+--------+
+4 rows in set (0.056 sec)
+
+MariaDB [ppa41]> select * from student where city in('pune', 'mumbai');
++------+-------+-------+--------+
+| RID  | Name  | Marks | City   |
++------+-------+-------+--------+
+|  101 | Amit  |    87 | Pune   |
+|  102 | Pooja |    92 | Mumbai |
+|  121 | Aditi |    67 | Mumbai |
++------+-------+-------+--------+
+3 rows in set (0.003 sec)
+
+MariaDB [ppa41]> select * from student where city = 'pune' or city = 'mumbai');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+MariaDB [ppa41]> select * from student where city = 'pune' or city = 'mumbai';
++------+-------+-------+--------+
+| RID  | Name  | Marks | City   |
++------+-------+-------+--------+
+|  101 | Amit  |    87 | Pune   |
+|  102 | Pooja |    92 | Mumbai |
+|  121 | Aditi |    67 | Mumbai |
++------+-------+-------+--------+
+3 rows in set (0.000 sec)
+
+MariaDB [ppa41]> select * from student where marks >= 70 or marks < = 100;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= 100' at line 1
+MariaDB [ppa41]> select * from student where marks >= 70 and  marks < = 100;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= 100' at line 1
+MariaDB [ppa41]> select * from student where marks >= 70 and  marks <= 100;
++------+-------+-------+--------+
+| RID  | Name  | Marks | City   |
++------+-------+-------+--------+
+|  101 | Amit  |    87 | Pune   |
+|  102 | Pooja |    92 | Mumbai |
+|  201 | Sneha |    98 | Satara |
++------+-------+-------+--------+
+3 rows in set (0.000 sec)
+
+MariaDB [ppa41]> select * from student where marks between 70 and 100;
++------+-------+-------+--------+
+| RID  | Name  | Marks | City   |
++------+-------+-------+--------+
+|  101 | Amit  |    87 | Pune   |
+|  102 | Pooja |    92 | Mumbai |
+|  201 | Sneha |    98 | Satara |
++------+-------+-------+--------+
+3 rows in set (0.002 sec)
+
+MariaDB [ppa41]> select * from student;
++------+-------+-------+--------+
+| RID  | Name  | Marks | City   |
++------+-------+-------+--------+
+|  101 | Amit  |    87 | Pune   |
+|  102 | Pooja |    92 | Mumbai |
+|  121 | Aditi |    67 | Mumbai |
+|  201 | Sneha |    98 | Satara |
++------+-------+-------+--------+
+4 rows in set (0.001 sec)
+
+MariaDB [ppa41]> insert into Student values(211, 'Sagar', 66  'Pune';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''Pune'' at line 1
+MariaDB [ppa41]> insert into Student values(211, 'Sagar', 66  'Pune');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''Pune')' at line 1
+MariaDB [ppa41]> insert into Student values(211, 'Sagar', 66, 'Pune');
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [ppa41]> insert into Student values(221, 'Ganesh', 69, 'Nashik');
+Query OK, 1 row affected (0.042 sec)
+
+MariaDB [ppa41]> select * from student;
++------+--------+-------+--------+
+| RID  | Name   | Marks | City   |
++------+--------+-------+--------+
+|  101 | Amit   |    87 | Pune   |
+|  102 | Pooja  |    92 | Mumbai |
+|  121 | Aditi  |    67 | Mumbai |
+|  201 | Sneha  |    98 | Satara |
+|  211 | Sagar  |    66 | Pune   |
+|  221 | Ganesh |    69 | Nashik |
++------+--------+-------+--------+
+6 rows in set (0.000 sec)
+
+MariaDB [ppa41]> select city, count(rid) from student group by city;
++--------+------------+
+| city   | count(rid) |
++--------+------------+
+| Mumbai |          2 |
+| Nashik |          1 |
+| Pune   |          2 |
+| Satara |          1 |
++--------+------------+
+4 rows in set (0.004 sec)
+
+MariaDB [ppa41]> alter table Student add age int;
+Query OK, 0 rows affected (0.062 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [ppa41]> describe student;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| RID   | int(11)      | YES  |     | NULL    |       |
+| Name  | varchar(255) | YES  |     | NULL    |       |
+| Marks | int(11)      | YES  |     | NULL    |       |
+| City  | varchar(255) | YES  |     | NULL    |       |
+| age   | int(11)      | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+5 rows in set (0.021 sec)
+
+MariaDB [ppa41]> select * from student;
++------+--------+-------+--------+------+
+| RID  | Name   | Marks | City   | age  |
++------+--------+-------+--------+------+
+|  101 | Amit   |    87 | Pune   | NULL |
+|  102 | Pooja  |    92 | Mumbai | NULL |
+|  121 | Aditi  |    67 | Mumbai | NULL |
+|  201 | Sneha  |    98 | Satara | NULL |
+|  211 | Sagar  |    66 | Pune   | NULL |
+|  221 | Ganesh |    69 | Nashik | NULL |
++------+--------+-------+--------+------+
+6 rows in set (0.001 sec)
+
+MariaDB [ppa41]> update student set age = 21 where rid = 101;
+Query OK, 1 row affected (0.009 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [ppa41]> select * from student;
++------+--------+-------+--------+------+
+| RID  | Name   | Marks | City   | age  |
++------+--------+-------+--------+------+
+|  101 | Amit   |    87 | Pune   |   21 |
+|  102 | Pooja  |    92 | Mumbai | NULL |
+|  121 | Aditi  |    67 | Mumbai | NULL |
+|  201 | Sneha  |    98 | Satara | NULL |
+|  211 | Sagar  |    66 | Pune   | NULL |
+|  221 | Ganesh |    69 | Nashik | NULL |
++------+--------+-------+--------+------+
+6 rows in set (0.000 sec)
+
+MariaDB [ppa41]> alter table student drop age;
+Query OK, 0 rows affected (0.023 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [ppa41]> describe student;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| RID   | int(11)      | YES  |     | NULL    |       |
+| Name  | varchar(255) | YES  |     | NULL    |       |
+| Marks | int(11)      | YES  |     | NULL    |       |
+| City  | varchar(255) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.019 sec)
+
+MariaDB [ppa41]> select * from student;
++------+--------+-------+--------+
+| RID  | Name   | Marks | City   |
++------+--------+-------+--------+
+|  101 | Amit   |    87 | Pune   |
+|  102 | Pooja  |    92 | Mumbai |
+|  121 | Aditi  |    67 | Mumbai |
+|  201 | Sneha  |    98 | Satara |
+|  211 | Sagar  |    66 | Pune   |
+|  221 | Ganesh |    69 | Nashik |
++------+--------+-------+--------+
+6 rows in set (0.000 sec)
+
+MariaDB [ppa41]> select city, count(rid) from group by city where count(rid) > 2;
+ERROR 2006 (HY000): MySQL server has gone away
+No connection. Trying to reconnect...
+Connection id:    10
+Current database: ppa41
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'group by city where count(rid) > 2' at line 1
+MariaDB [ppa41]> select * from student;
++------+--------+-------+--------+
+| RID  | Name   | Marks | City   |
++------+--------+-------+--------+
+|  101 | Amit   |    87 | Pune   |
+|  102 | Pooja  |    92 | Mumbai |
+|  121 | Aditi  |    67 | Mumbai |
+|  201 | Sneha  |    98 | Satara |
+|  211 | Sagar  |    66 | Pune   |
+|  221 | Ganesh |    69 | Nashik |
++------+--------+-------+--------+
+6 rows in set (0.040 sec)
+
+MariaDB [ppa41]> select city, count(rid) from group by city having count(rid) > 2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'group by city having count(rid) > 2' at line 1
+MariaDB [ppa41]> select city, count(rid) from student group by city having count(rid) > 2;
+Empty set (0.010 sec)
+
+MariaDB [ppa41]> insert into student values(501, 'Ramesh', 78, 'Mumbai');
+Query OK, 1 row affected (0.022 sec)
+
+MariaDB [ppa41]> insert into student values(511, 'Rashmi', 88, 'Pune');
+Query OK, 1 row affected (0.040 sec)
+
+MariaDB [ppa41]> select * from student;
++------+--------+-------+--------+
+| RID  | Name   | Marks | City   |
++------+--------+-------+--------+
+|  101 | Amit   |    87 | Pune   |
+|  102 | Pooja  |    92 | Mumbai |
+|  121 | Aditi  |    67 | Mumbai |
+|  201 | Sneha  |    98 | Satara |
+|  211 | Sagar  |    66 | Pune   |
+|  221 | Ganesh |    69 | Nashik |
+|  501 | Ramesh |    78 | Mumbai |
+|  511 | Rashmi |    88 | Pune   |
++------+--------+-------+--------+
+8 rows in set (0.000 sec)
+
+MariaDB [ppa41]> select city, count(rid) from group by city where count(rid) > 2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'group by city where count(rid) > 2' at line 1
+MariaDB [ppa41]> select city, count(rid) from student group by city having count(rid) > 2;
++--------+------------+
+| city   | count(rid) |
++--------+------------+
+| Mumbai |          3 |
+| Pune   |          3 |
++--------+------------+
+2 rows in set (0.034 sec)
+
+MariaDB [ppa41]> create table customer(Cust_id int, Cust_Name varchar(255));
+Query OK, 0 rows affected (0.089 sec)
+
+MariaDB [ppa41]> create table orders(Order_id int, Cust_id int, Order_Amount int);
+Query OK, 0 rows affected (0.056 sec)
+
+MariaDB [ppa41]> describe customer;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| Cust_id   | int(11)      | YES  |     | NULL    |       |
+| Cust_Name | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+2 rows in set (0.083 sec)
+
+MariaDB [ppa41]> describe orders;
++--------------+---------+------+-----+---------+-------+
+| Field        | Type    | Null | Key | Default | Extra |
++--------------+---------+------+-----+---------+-------+
+| Order_id     | int(11) | YES  |     | NULL    |       |
+| Cust_id      | int(11) | YES  |     | NULL    |       |
+| Order_Amount | int(11) | YES  |     | NULL    |       |
++--------------+---------+------+-----+---------+-------+
+3 rows in set (0.071 sec)
+
+MariaDB [ppa41]> insert into customer values(1, 'Amit');
+Query OK, 1 row affected (0.010 sec)
+
+MariaDB [ppa41]> insert into customer values(2, 'Pooja');
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [ppa41]> insert into customer values(3, 'Anil');
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [ppa41]> insert into customer values(4, 'Sneha');
+Query OK, 1 row affected (0.041 sec)
+
+MariaDB [ppa41]> insert into customer values(5, 'Suhas');
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [ppa41]> select * from customer;
++---------+-----------+
+| Cust_id | Cust_Name |
++---------+-----------+
+|       1 | Amit      |
+|       2 | Pooja     |
+|       3 | Anil      |
+|       4 | Sneha     |
+|       5 | Suhas     |
++---------+-----------+
+5 rows in set (0.000 sec)
+
+MariaDB [ppa41]> insert into orders values(101, 2, 1200);
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [ppa41]> insert into orders values(102, 8, 1100);
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [ppa41]> insert into orders values(103, 4, 2100);
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [ppa41]> insert into orders values(104, 9, 100);
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [ppa41]> insert into orders values(105, 6, 800);
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [ppa41]> select * from  orders;
++----------+---------+--------------+
+| Order_id | Cust_id | Order_Amount |
++----------+---------+--------------+
+|      101 |       2 |         1200 |
+|      102 |       8 |         1100 |
+|      103 |       4 |         2100 |
+|      104 |       9 |          100 |
+|      105 |       6 |          800 |
++----------+---------+--------------+
+5 rows in set (0.000 sec)
+
+MariaDB [ppa41]> select * from customer;
++---------+-----------+
+| Cust_id | Cust_Name |
++---------+-----------+
+|       1 | Amit      |
+|       2 | Pooja     |
+|       3 | Anil      |
+|       4 | Sneha     |
+|       5 | Suhas     |
++---------+-----------+
+5 rows in set (0.000 sec)
+
+MariaDB [ppa41]>   select customer.cust_id, customer.cust_name, orders.order_id, orders.order_amount from customer inner join orders on customer.cust_id = orders.cust_id;
++---------+-----------+----------+--------------+
+| cust_id | cust_name | order_id | order_amount |
++---------+-----------+----------+--------------+
+|       2 | Pooja     |      101 |         1200 |
+|       4 | Sneha     |      103 |         2100 |
++---------+-----------+----------+--------------+
+2 rows in set (0.010 sec)
+
+MariaDB [ppa41]>   select customer.cust_id, customer.cust_name, orders.order_id, orders.order_amount from customer left join orders on customer.cust_id = orders.cust_id;
++---------+-----------+----------+--------------+
+| cust_id | cust_name | order_id | order_amount |
++---------+-----------+----------+--------------+
+|       2 | Pooja     |      101 |         1200 |
+|       4 | Sneha     |      103 |         2100 |
+|       1 | Amit      |     NULL |         NULL |
+|       3 | Anil      |     NULL |         NULL |
+|       5 | Suhas     |     NULL |         NULL |
++---------+-----------+----------+--------------+
+5 rows in set (0.002 sec)
+
+MariaDB [ppa41]>   select customer.cust_id, customer.cust_name, orders.order_id, orders.order_amount from customer right join orders on customer.cust_id = orders.cust_id;
++---------+-----------+----------+--------------+
+| cust_id | cust_name | order_id | order_amount |
++---------+-----------+----------+--------------+
+|       2 | Pooja     |      101 |         1200 |
+|       4 | Sneha     |      103 |         2100 |
+|    NULL | NULL      |      102 |         1100 |
+|    NULL | NULL      |      104 |          100 |
+|    NULL | NULL      |      105 |          800 |
++---------+-----------+----------+--------------+
+5 rows in set (0.001 sec)
+
+MariaDB [ppa41]>

@@ -1,4 +1,17 @@
 
+C:\Users\Kedar>cd C:\xampp\mysql\bin
+
+C:\xampp\mysql\bin>mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 16
+Server version: 10.4.22-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]>
+
 C:\xampp\mysql\bin>mysql -u root
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 8
@@ -22,19 +35,6 @@ MariaDB [(none)]> show databases;
 
 MariaDB [(none)]>  create database PPA41;
 Query OK, 1 row affected (0.007 sec)
-
-MariaDB [(none)]> show databases
-    -> Bye
-Ctrl-C -- exit!
-
-C:\xampp\mysql\bin>mysql -u root
-Welcome to the MariaDB monitor.  Commands end with ; or \g.
-Your MariaDB connection id is 9
-Server version: 10.4.22-MariaDB mariadb.org binary distribution
-
-Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 MariaDB [(none)]> show databases;
 +--------------------+
@@ -186,8 +186,6 @@ MariaDB [PPA41]> select * from student order by rid;
 +------+-------+-------+--------+
 5 rows in set (0.000 sec)
 
-MariaDB [PPA41]> select * from student order by desc;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'desc' at line 1
 MariaDB [PPA41]> select * from student order by marks DESC;
 +------+-------+-------+--------+
 | RID  | Name  | Marks | City   |
@@ -294,8 +292,6 @@ MariaDB [PPA41]> select count(name) from student;
 +-------------+
 1 row in set (0.001 sec)
 
-MariaDB [PPA41]> select count(rid) from student whereb city = 'mumbai';
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'city = 'mumbai'' at line 1
 MariaDB [PPA41]> select count(rid) from student where city = 'mumbai';
 +------------+
 | count(rid) |
@@ -352,17 +348,9 @@ MariaDB [PPA41]> select * from student where name like 'p%a';
 +------+-------+-------+--------+
 1 row in set (0.000 sec)
 
-Microsoft Windows [Version 10.0.19045.2913]
-(c) Microsoft Corporation. All rights reserved.
 
-C:\Users\Kedar>C:\xampp\mysql\bin
-'C:\xampp\mysql\bin' is not recognized as an internal or external command,
-operable program or batch file.
 
 C:\Users\Kedar>cd C:\xampp\mysql\bin
-
-C:\xampp\mysql\bin>mysql Myexe -u root
-ERROR 1049 (42000): Unknown database 'myexe'
 
 C:\xampp\mysql\bin>mysql -u root
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
@@ -420,8 +408,6 @@ MariaDB [ppa41]> select * from student where city in('pune', 'mumbai');
 +------+-------+-------+--------+
 3 rows in set (0.003 sec)
 
-MariaDB [ppa41]> select * from student where city = 'pune' or city = 'mumbai');
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
 MariaDB [ppa41]> select * from student where city = 'pune' or city = 'mumbai';
 +------+-------+-------+--------+
 | RID  | Name  | Marks | City   |

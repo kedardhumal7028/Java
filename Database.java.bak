@@ -1,4 +1,8 @@
 import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 
 class Database
 {
@@ -6,7 +10,7 @@ class Database
 	{
 		String URL = "jdbc:mysql://localhost:3306/ppa41";;
 		String Username = "root";
-		String Password = "root";
+		String Password = "localhost";
 		String Query = "select * from student";
 		
 		Connection cobj = DriverManager.getConnection(URL,Username,Password);
