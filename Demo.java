@@ -23,10 +23,10 @@ class Maths
 	    int iAns = 0;
 	    iAns = iNo1+iNo2;
 	    return iAns;
-}
+    }
 
-   public int Substraction()
-   {
+    public int Substraction()
+    {
 	    int iAns = 0;
 	    iAns= iNo1 - iNo2;
 	    return iAns;

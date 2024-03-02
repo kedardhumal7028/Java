@@ -19,6 +19,7 @@ class MarvellousListener extends WindowAdapter
 	{
 		System.exit(0);
 	}	
+	
 }
 
 class GUI4
